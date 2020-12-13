@@ -4,14 +4,10 @@ class Form extends React.Component {
     nQuestions: 1,
   };
 
-  fetchData = async (event) => {
-    event.preventDefault();
-    const response = await fetch(
-      `https://opentdb.com/api.php?amount=${this.state.nQuestions}&category=11&difficulty=easy&type=multiple`
-    );
-    const data = await response.json();
+  // update the response options with A,B,C,D;
+  updateData = (data) => {
     const alpha = ["A", "B", "C", "D"];
-    data.results.forEach((element) => {
+    data.forEach((element) => {
       let temp = [],
         shuffled_options;
       const random = Math.floor(
@@ -22,7 +18,21 @@ class Form extends React.Component {
       shuffled_options = alpha.map((option, index) => [option, temp[index]]);
       element["updated_options"] = shuffled_options;
     });
-    this.props.onSubmit(this.state.nQuestions, data.results);
+    return data;
+  };
+
+  // Fetch the data from DB
+  fetchData = async (event) => {
+    event.preventDefault();
+    const response = await fetch(
+      `https://opentdb.com/api.php?amount=${this.state.nQuestions}&category=11&difficulty=easy&type=multiple`
+    );
+    // response data
+    const data = await response.json();
+    // updating data with options A,B,C,D
+    const result = this.updateData(data.results);
+    // submit the data to the main app
+    this.props.onSubmit(Number(this.state.nQuestions), result);
   };
 
   render() {
