@@ -52,8 +52,8 @@ const Timer = (props) => {
 const Option = (props) => {
   const color = {
     white: "white",
-    red: "red",
-    green: "green",
+    red: "#F74036",
+    green: "#37C451",
   };
   const setColor =
     props.choice === "" && props.status === ""

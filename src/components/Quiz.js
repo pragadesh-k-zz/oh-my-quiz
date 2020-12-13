@@ -10,7 +10,7 @@ class Quiz extends React.Component {
     nQuestions: 0,
     gameData: [],
     questionNumber: 0,
-    timer: 10,
+    timer: 15,
     choice: "",
     status: "",
     answered: 0,
