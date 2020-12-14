@@ -1,8 +1,10 @@
+import image from "../images/logo.svg";
+
 const Header = (props) => {
   return (
     <header>
-      <span className="fa fa-flag-checkered"></span>
-      <p>Oh My Quizz!</p>
+      <img className="logo" src={image} alt="logo"></img>
+      <p className="title">Oh My Quizz!</p>
     </header>
   );
 };

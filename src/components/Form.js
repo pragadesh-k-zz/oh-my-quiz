@@ -1,7 +1,7 @@
 import React from "react";
 class Form extends React.Component {
   state = {
-    nQuestions: 1,
+    nQuestions: "",
   };
 
   // update the response options with A,B,C,D;
@@ -38,17 +38,21 @@ class Form extends React.Component {
   render() {
     return (
       <form onSubmit={this.fetchData}>
-        <input
-          type="number"
-          value={this.state.nQuestions}
-          onChange={(event) =>
-            this.setState({ nQuestions: event.target.value })
-          }
-          required={true}
-          min="1"
-          className="input-ques"
-        />
-        <button className="btn-start">Start Quiz.</button>
+        <div className="form-section">
+          <input
+            type="number"
+            value={this.state.nQuestions}
+            onChange={(event) =>
+              this.setState({ nQuestions: event.target.value })
+            }
+            required={true}
+            min="1"
+            className="input-ques"
+            placeholder="No.Of.Questions"
+            max="15"
+          />
+          <button className="btn-start">Start Quiz.</button>
+        </div>
       </form>
     );
   }

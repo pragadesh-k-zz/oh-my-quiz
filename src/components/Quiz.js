@@ -32,7 +32,7 @@ class Quiz extends React.Component {
     if (this.state.nQuestions - 1 !== this.state.questionNumber) {
       this.setState({
         questionNumber: this.state.questionNumber + 1,
-        timer: 10,
+        timer: 20,
         choice: "",
         status: "",
       });

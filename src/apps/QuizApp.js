@@ -27,9 +27,9 @@ export default class QuizApp extends React.Component {
   render() {
     const { key } = this.state;
     return (
-      <div>
+      <>
         <Quiz key={key} startNewQuiz={this.startNewQuiz} />
-      </div>
+      </>
     );
   }
 }

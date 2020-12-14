@@ -50,30 +50,36 @@ const Timer = (props) => {
 };
 
 const Option = (props) => {
-  const color = {
-    white: "white",
-    red: "#F74036",
-    green: "#37C451",
+  const icon = {
+    white: ["none", "none"],
+    red: ["fa fa-times", "#fc4828"],
+    green: ["fa fa-check", "#28fc68"],
   };
-  const setColor =
+  const setIcon =
     props.choice === "" && props.status === ""
-      ? color.white
+      ? icon.white
       : props.choice === props.option[1]
-      ? color[props.status]
+      ? icon[props.status]
       : props.option[1] === props.correct_answer
-      ? color.green
-      : color.white;
+      ? icon.green
+      : icon.white;
   return (
     <div
       className="option-box"
-      style={{ backgroundColor: setColor }}
       onClick={props.checkAnswer.bind(this, props.option[1])}
     >
       <div className={`badge ${props.option[0]}`}>{props.option[0]}</div>
-      <p
+      <span
         className="option-text"
         dangerouslySetInnerHTML={{ __html: props.option[1] }}
-      ></p>
+      ></span>
+      <span
+        className={setIcon[0] !== "none" ? setIcon[0] : ""}
+        style={{
+          float: "right",
+          color: setIcon[1] !== "none" ? setIcon[1] : "none",
+        }}
+      ></span>
     </div>
   );
 };
