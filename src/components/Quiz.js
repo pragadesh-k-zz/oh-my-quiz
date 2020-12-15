@@ -47,7 +47,7 @@ class Quiz extends React.Component {
     if (this.state.timer > 0) {
       this.setState({ timer: this.state.timer - 1 });
     } else {
-      this.nextQuestion();
+      // this.nextQuestion();
     }
   };
 

@@ -68,7 +68,7 @@ const Option = (props) => {
       className="option-box"
       onClick={props.checkAnswer.bind(this, props.option[1])}
     >
-      <div className={`badge ${props.option[0]}`}>{props.option[0]}</div>
+      <span className={`badge ${props.option[0]}`}>{props.option[0]}</span>
       <span
         className="option-text"
         dangerouslySetInnerHTML={{ __html: props.option[1] }}
@@ -77,6 +77,7 @@ const Option = (props) => {
         className={setIcon[0] !== "none" ? setIcon[0] : ""}
         style={{
           float: "right",
+          clear: "right",
           color: setIcon[1] !== "none" ? setIcon[1] : "none",
         }}
       ></span>
