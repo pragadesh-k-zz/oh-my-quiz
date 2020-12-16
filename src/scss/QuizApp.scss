@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+@import "config";
+
+html,
+body,
+#root {
+  min-height: 100vh;
+  min-width: 300px;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+body {
+  background: linear-gradient($primary-color, $secondary-color 100%) no-repeat;
+  background-size: cover;
+}
+
+// Main Container
+.container {
+  background-color: white;
+  padding: 1rem;
+  width: 150vh;
+  border: 10px solid black;
+  min-height: 80vh;
+  color: black;
+
+  // HEADER
+  header,
+  .question-box {
+    text-align: center;
+  }
+
+  header {
+    .title {
+      font-weight: 500;
+      font-size: 2rem;
+      letter-spacing: 8px;
+    }
+
+    .logo {
+      width: 80.5px;
+      height: 80.4px;
+    }
+  }
+
+  //QUESTION BOX
+  .question-box {
+    margin: 2rem;
+    margin-top: 4rem;
+    font-size: 20px;
+    letter-spacing: 2px;
+    line-height: 30px;
+  }
+
+  //TIMER
+  .timer-box {
+    width: 100px;
+    margin: 1rem auto;
+    .time-bar {
+      font-weight: bold;
+      color: $primary-color;
+      text-align: center;
+    }
+  }
+
+  // OPTIONS
+  .option-section {
+    padding: 1rem;
+    margin: 2rem 0.5rem;
+    .option-box {
+      padding: 1rem;
+      color: black;
+      cursor: pointer;
+      transition: transform 0.3s;
+      border-radius: 17px;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      border: 3px solid $secondary-color;
+
+      &:hover {
+        transform: scale(0.9);
+      }
+
+      // ACTUAL OPTION
+      .option-text {
+        text-transform: uppercase;
+      }
+
+      //OPTION ID
+      .badge {
+        padding: 2px;
+        text-align: center;
+        width: 35px;
+        border-radius: 50%;
+        background-color: $primary-color;
+        color: white;
+        font-family: "Poppins", sans-serif;
+        font-weight: lighter;
+      }
+    }
+  }
+
+  // INITIAL INPUT
+  form {
+    min-height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .form-section {
+      min-width: 13rem;
+    }
+    .input-ques {
+      @extend %input;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .btn-start {
+      @extend %btn;
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+
+  //NEXT BUTTON
+  .next-section {
+    margin: 1rem;
+    padding: 1rem;
+
+    .btn-next {
+      @extend %btn;
+      display: block;
+      font-size: 15px;
+    }
+  }
+
+  // PLAY AGAIN
+  .again {
+    padding: 1rem;
+    text-align: center;
+    .btn-playagain {
+      @extend %btn;
+    }
+    .greet {
+      font-size: 3rem;
+      margin: 1rem;
+    }
+  }
+}
+
+// RESPONSIVE MEDIA
+@import "mobile";
+@import "tablet";

@@ -1,0 +1,23 @@
+@media (min-width: 350px) {
+  .badge {
+    float: left;
+    clear: left;
+  }
+}
+
+@media (min-width: 700px) {
+  .option-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 1.5rem;
+  }
+  .option-box {
+    box-shadow: 3px 4px 4px 2px rgba(0, 0, 0, 0.31);
+    margin-bottom: 0px;
+  }
+
+  .btn-next {
+    margin-left: auto;
+  }
+}
