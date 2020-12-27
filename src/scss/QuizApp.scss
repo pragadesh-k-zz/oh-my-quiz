@@ -160,6 +160,7 @@ body {
     flex-direction: column;
     max-width: 300px;
     font-size: 1.05em;
+    animation: appear 0.5s ease-in-out 1 normal forwards;
     p,
     sub {
       opacity: 0.5;
@@ -180,6 +181,20 @@ body {
       }
       100% {
         width: 100%;
+      }
+    }
+
+    @keyframes appear {
+      0% {
+        opacity: 0.2;
+        transform: scale(0);
+      }
+      80% {
+        transform: scale(1.1);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
       }
     }
   }
