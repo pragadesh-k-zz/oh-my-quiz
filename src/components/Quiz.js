@@ -71,7 +71,7 @@ class Quiz extends React.Component {
     }
   };
 
-  render() {
+  handleRender = () => {
     const {
       gameData,
       gameState,
@@ -82,28 +82,36 @@ class Quiz extends React.Component {
       status,
       answered,
     } = this.state;
-    return (
-      <div className="container">
-        <Header />
-        {!gameState && nQuestions === 0 ? (
-          <Form onSubmit={this.handleSubmit} />
-        ) : null}
-        {gameState && nQuestions > 0 ? (
-          <QuizBody
-            data={gameData[questionNumber]}
-            timer={timer}
-            nextQuestion={this.nextQuestion}
-            setSeconds={this.setSeconds}
-            checkAnswer={this.checkAnswer}
-            choiceState={{ choice, status }}
-          />
-        ) : null}
-        {!gameState && nQuestions > 0 ? (
+    if (gameState && nQuestions > 0) {
+      return (
+        <QuizBody
+          data={gameData[questionNumber]}
+          timer={timer}
+          nextQuestion={this.nextQuestion}
+          setSeconds={this.setSeconds}
+          checkAnswer={this.checkAnswer}
+          choiceState={{ choice, status }}
+        />
+      );
+    } else {
+      if (!this.state.gameState && this.state.nQuestions === 0) {
+        return <Form onSubmit={this.handleSubmit} />;
+      } else if (!this.state.gameState && this.state.nQuestions > 0) {
+        return (
           <PlayAgain
             startNewQuiz={this.props.startNewQuiz}
             status={{ nQuestions, answered }}
           />
-        ) : null}
+        );
+      }
+    }
+  };
+
+  render() {
+    return (
+      <div className="container">
+        <Header />
+        {this.handleRender()}
       </div>
     );
   }

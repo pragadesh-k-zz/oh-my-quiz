@@ -25,15 +25,15 @@ h6 {
 %btn {
   cursor: pointer;
   display: inline-block;
-  transition: transform 0.3s;
+  transition: 0.3s;
   background-color: $primary-color;
   padding: 10px 30px;
-  border: 1px solid $primary-color;
   font-family: "Poppins";
   color: white;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
+  border: 0;
   &:hover {
     transform: scale(1.1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);

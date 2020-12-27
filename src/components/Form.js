@@ -2,6 +2,7 @@ import React from "react";
 class Form extends React.Component {
   state = {
     nQuestions: "",
+    load: false,
   };
 
   // update the response options with A,B,C,D;
@@ -31,30 +32,54 @@ class Form extends React.Component {
     const data = await response.json();
     // updating data with options A,B,C,D
     const result = this.updateData(data.results);
-    // submit the data to the main app
-    this.props.onSubmit(Number(this.state.nQuestions), result);
+    this.setState({ load: true });
+
+    // Timer
+    setTimeout(() => {
+      // submit the data to the main app
+      this.props.onSubmit(Number(this.state.nQuestions), result);
+    }, 5000);
+  };
+
+  handleRender = () => {
+    if (!this.state.load) {
+      return (
+        <form onSubmit={this.fetchData}>
+          <div className="form-section">
+            <input
+              type="number"
+              value={this.state.nQuestions}
+              onChange={(event) =>
+                this.setState({ nQuestions: event.target.value })
+              }
+              required={true}
+              min="1"
+              className="input-ques"
+              placeholder="No.Of.Questions"
+              max="15"
+            />
+            <button className="btn-start">Start Quiz.</button>
+          </div>
+        </form>
+      );
+    } else {
+      return <Loader />;
+    }
   };
 
   render() {
-    return (
-      <form onSubmit={this.fetchData}>
-        <div className="form-section">
-          <input
-            type="number"
-            value={this.state.nQuestions}
-            onChange={(event) =>
-              this.setState({ nQuestions: event.target.value })
-            }
-            required={true}
-            min="1"
-            className="input-ques"
-            placeholder="No.Of.Questions"
-            max="15"
-          />
-          <button className="btn-start">Start Quiz.</button>
-        </div>
-      </form>
-    );
+    return <>{this.handleRender()}</>;
   }
 }
+
+function Loader() {
+  return (
+    <div className="loading">
+      <p>Setting up...</p>
+      <div className="loader"></div>
+      <sub>Prepare yourself</sub>
+    </div>
+  );
+}
+
 export default Form;
